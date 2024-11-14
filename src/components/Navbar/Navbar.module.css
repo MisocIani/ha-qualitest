@@ -1,0 +1,65 @@
+.navContainer {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    .navLogo {
+        width: 170px;
+        height: max-content;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .inputWrapper {
+        width: 200px;
+        height: 30px;
+        border-radius: 3px;
+        position: relative;
+
+        .searchIcon {
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            right: 0;
+            top: 5px;
+            cursor: pointer;
+        }
+        input {
+            height: 100%;
+            width: 100%;
+            padding-left: 5px;
+            font-size: 16px;
+            border-radius: 3px;
+            border: 1px solid black;
+            background-color: rgb(255, 255, 255);
+
+            &:focus {
+                outline: none;
+                background-color: #f0f8ff;
+            }
+        }
+    }
+
+    .buttonsWrapper {
+        width: 70px;
+        display: flex;
+        justify-content: space-between;
+
+        .btn {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+
+            .icon {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+}
