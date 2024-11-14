@@ -1,0 +1,36 @@
+.layout {
+    width: 100%;
+    height: 100%;
+
+    .mainContainer {
+        margin: 0 auto;
+        padding: 0 70px;
+        max-width: 1240px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        background-color: #f4f4f4;
+        height: 100%;
+
+        .parentContent {
+            height: 100%;
+            background-color: #f4f4f4;
+            display: flex;
+            gap: 20px;
+            padding-bottom: 10px;
+
+            .leftPannel {
+                background-color: #fff;
+                padding: 20px;
+                width: 35%;
+            }
+
+            .rightPannel {
+                background-color: #fff;
+                padding: 20px;
+                width: 65%;
+                height: 80vh;
+            }
+        }
+    }
+}
