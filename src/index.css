@@ -1,14 +1,18 @@
 @import './styles/variables.css';
 
-* {
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-html,
-body,
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
 #root {
-  height: 100vh;
-  margin: 0;
-  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
