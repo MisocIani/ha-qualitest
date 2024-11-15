@@ -3,6 +3,7 @@ import styles from "./ProductView.module.css";
 import { IoIosStarOutline } from "react-icons/io";
 import { GiShoppingCart } from "react-icons/gi";
 import { Product } from "../../types/types";
+import Review from "../reviewSection/Reviews";
 
 interface ProductViewProps {
   product: Product;
@@ -36,12 +37,9 @@ const ProductView: React.FC<ProductViewProps> = ({ product }) => {
         <p className={styles.productWeight}></p>
       </div>
       <div className={styles.productSecondary}>
-        <div className={styles.stars}>
-          {Array.from({ length: Math.round(product.rating) }, (_, i) => (
-            <IoIosStarOutline key={i} />
-          ))}
+        <div className={styles.reviewWrapper}>
+          <Review reviews={product.reviews}/>
         </div>
-        <div className={styles.reviewWrapper}></div>
         <div className={styles.buttonsParent}>
           <button className={styles.cartBtn}>
             <GiShoppingCart className={styles.btn} />

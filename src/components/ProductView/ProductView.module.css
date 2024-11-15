@@ -5,7 +5,8 @@
     .productWindow {
         width: 60%;
         border: 1px solid black;
-        padding: 10px;
+        background-color: #f4f4f4;
+        padding: 2px;
         border-radius: 8px;
         height: max-content;
 
@@ -126,5 +127,11 @@
 
     .productSecondary {
         width: 40%;
+        position: relative;
+
+        .reviewWrapper {
+            width: 100%;
+            margin-top: 70px;
+        }
     }
 }
