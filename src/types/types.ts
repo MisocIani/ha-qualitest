@@ -64,3 +64,11 @@ export interface SearchState {
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
 }
+
+
+export interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  imageUrl: string;
+  altText: string;
+}

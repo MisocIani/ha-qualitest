@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ProductView.module.css";
 import { IoIosStarOutline } from "react-icons/io";
 import { GiShoppingCart } from "react-icons/gi";
 import { Product } from "../../types/types";
 import Review from "../reviewSection/Reviews";
+import Modal from "../ImageModal/Modal";
 
 interface ProductViewProps {
-  product: Product;
+  product: Product | null;
 }
 
 const ProductView: React.FC<ProductViewProps> = ({ product }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => setModalIsOpen(true);
+  const closeModal = () => setModalIsOpen(false);
+
   if (!product) {
     return <p>Product not found</p>;
   }
@@ -26,9 +32,15 @@ const ProductView: React.FC<ProductViewProps> = ({ product }) => {
             <p className={styles.discount}>-{product.discountPercentage}%</p>
           </div>
         </div>
-        <div className={styles.imgWrapper}>
+        <div onClick={openModal} className={styles.imgWrapper}>
           <img src={product.thumbnail} alt={product.title} />
         </div>
+        <Modal
+          isOpen={modalIsOpen}
+          onClose={closeModal}
+          imageUrl={product.thumbnail}
+          altText={product.title}
+        />
         <p className={styles.productDescription}>{product.description}</p>
 
         <p className={styles.productDimensions}>
@@ -38,7 +50,7 @@ const ProductView: React.FC<ProductViewProps> = ({ product }) => {
       </div>
       <div className={styles.productSecondary}>
         <div className={styles.reviewWrapper}>
-          <Review reviews={product.reviews}/>
+          <Review reviews={product.reviews} />
         </div>
         <div className={styles.buttonsParent}>
           <button className={styles.cartBtn}>

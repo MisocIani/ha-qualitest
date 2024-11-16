@@ -90,7 +90,7 @@ const Dashboard: React.FC = () => {
             />
           </div>
           <div className={styles.rightPannel}>
-            {selectedProduct && <ProductView product={selectedProduct} />}
+            <ProductView product={selectedProduct}/>
           </div>
         </div>
       </div>

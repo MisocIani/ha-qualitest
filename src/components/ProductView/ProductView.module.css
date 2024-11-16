@@ -1,6 +1,7 @@
 .productInfoWrapper {
     display: flex;
     gap: 40px;
+    height: 100%;
 
     .productWindow {
         width: 60%;
@@ -128,10 +129,33 @@
     .productSecondary {
         width: 40%;
         position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
         .reviewWrapper {
             width: 100%;
             margin-top: 70px;
+            margin-bottom: 20px;
+        }
+
+        .buttonsParent {
+            display: flex;
+            gap: 40px;
+            justify-content: end;
+            padding-right: 30px;
+            padding-bottom: 20px;
+
+            .cartBtn,
+            .favBtn {
+                background-color: transparent;
+                border: none;
+
+                .btn {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
         }
     }
 }
