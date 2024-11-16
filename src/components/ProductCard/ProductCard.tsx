@@ -1,14 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./ProductCard.module.css";
 import { GiShoppingCart } from "react-icons/gi";
-import { IoIosStarOutline } from "react-icons/io";
-import { ProductCardProps } from "../../types/types";
+import { IoIosStarOutline, IoIosStar } from "react-icons/io";
+import { Product, ProductCardProps } from "../../types/types";
+import {
+  addFavorite,
+  removeFavorite,
+  isFavorite,
+} from "../../utils/localStorageUtils";
 
 const ProductCard: React.FC<ProductCardProps> = ({
   products,
   status,
   onProductClick,
+  onFavoritesChange,
 }) => {
+  const [favoriteStatuses, setFavoriteStatuses] = useState<{
+    [key: number]: boolean;
+  }>({});
+
+  useEffect(() => {
+    const initialStatuses = products.reduce((acc, product) => {
+      acc[product.id] = isFavorite(product.id);
+      return acc;
+    }, {} as { [key: number]: boolean });
+    setFavoriteStatuses(initialStatuses);
+  }, [products]);
+
+  const handleFavoriteClick = (product: Product) => {
+    if (favoriteStatuses[product.id]) {
+      removeFavorite(product.id);
+    } else {
+      addFavorite(product);
+    }
+    setFavoriteStatuses((prevStatuses) => ({
+      ...prevStatuses,
+      [product.id]: !prevStatuses[product.id],
+    }));
+    onFavoritesChange();
+  };
+
   return (
     <div className={styles.productCard}>
       {status === "loading" && <p>Loading products...</p>}
@@ -42,8 +73,18 @@ const ProductCard: React.FC<ProductCardProps> = ({
               <button className={styles.cartBtn}>
                 <GiShoppingCart className={styles.btn} />
               </button>
-              <button className={styles.favBtn}>
-                <IoIosStarOutline className={styles.btn} />
+              <button
+                className={styles.favBtn}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleFavoriteClick(product);
+                }}
+              >
+                {favoriteStatuses[product.id] ? (
+                  <IoIosStar className={styles.btn} />
+                ) : (
+                  <IoIosStarOutline className={styles.btn} />
+                )}
               </button>
             </div>
           </div>
