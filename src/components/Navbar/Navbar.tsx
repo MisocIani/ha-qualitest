@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
         contentType="favourites"
       />
       <div className={styles.navLogo}>
-        <img src={`${process.env.PUBLIC_URL}/images/navLogo.svg`} alt="logo" />
+        <img src={`${process.env.PUBLIC_URL}/images/navLogo.svg`} alt="header logo" />
       </div>
 
       <div className={styles.inputWrapper}>
