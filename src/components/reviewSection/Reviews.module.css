@@ -11,7 +11,7 @@
 }
 
 .review {
-    background-color: #f4f4f4;
+    background-color: lightblue;
     padding: 1.5rem 2rem;
     border-radius: var(--radius);
     box-shadow: var(--light-shadow);
@@ -68,7 +68,7 @@
 
 .prevBtn,
 .nextBtn {
-    color: var(--clr-primary-7);
+    color: var(--clr-grey-1);
     font-size: 1.25rem;
     background: transparent;
     border: none;

@@ -5,8 +5,9 @@
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    padding: 20px 0;
+    padding: 20px 10px;
     position: relative;
+    background-color: #92c9c7;
 
     .navLogo {
         width: 170px;
@@ -23,6 +24,7 @@
         height: 30px;
         border-radius: 3px;
         position: relative;
+        background-color: #8fa38a; 
 
         .searchIcon {
             position: absolute;
@@ -31,6 +33,7 @@
             right: 0;
             top: 5px;
             cursor: pointer;
+            color: #020402; 
         }
         input {
             height: 100%;
@@ -38,12 +41,12 @@
             padding-left: 5px;
             font-size: 16px;
             border-radius: 3px;
-            border: 1px solid black;
-            background-color: rgb(255, 255, 255);
+            border: 1px solid #647a67; 
+            background-color: lightblue;
 
             &:focus {
                 outline: none;
-                background-color: #f0f8ff;
+                background-color: #c5efcb; 
             }
         }
     }
@@ -66,8 +69,7 @@
             .icon {
                 width: 30px;
                 height: 30px;
-
-               
+                color: #758173;
             }
         }
     }
