@@ -1,12 +1,18 @@
 import React from "react";
 import styles from "./Modal.module.css";
 import { ModalProps } from "../../types/types";
+import Favourites from "../Favourites/Favourites";
 
-const Modal: React.FC<ModalProps> = ({
+interface ExtendedModalProps extends ModalProps {
+  contentType: "image" | "favourites";
+}
+
+const Modal: React.FC<ExtendedModalProps> = ({
   isOpen,
   onClose,
   imageUrl,
   altText,
+  contentType,
 }) => {
   if (!isOpen) return null;
 
@@ -16,7 +22,11 @@ const Modal: React.FC<ModalProps> = ({
         <button onClick={onClose} className={styles.closeButton}>
           &times;
         </button>
-        <img src={imageUrl} alt={altText} className={styles.modalImage} />
+        {contentType === "image" ? (
+          <img src={imageUrl} alt={altText} className={styles.modalImage} />
+        ) : (
+          <Favourites />
+        )}
       </div>
     </div>
   );

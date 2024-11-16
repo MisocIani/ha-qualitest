@@ -1,24 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./ProductView.module.css";
-import { IoIosStarOutline } from "react-icons/io";
+import { IoIosStar, IoIosStarOutline } from "react-icons/io";
 import { GiShoppingCart } from "react-icons/gi";
 import { Product } from "../../types/types";
 import Review from "../reviewSection/Reviews";
-import Modal from "../ImageModal/Modal";
+import Modal from "../Modal/Modal";
+import {
+  addFavorite,
+  removeFavorite,
+  isFavorite,
+} from "../../utils/localStorageUtils";
 
 interface ProductViewProps {
   product: Product | null;
 }
 
 const ProductView: React.FC<ProductViewProps> = ({ product }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [favoriteStatus, setFavoriteStatus] = useState<boolean>(false);
 
   const openModal = () => setModalIsOpen(true);
   const closeModal = () => setModalIsOpen(false);
 
+  useEffect(() => {
+    if (product) {
+      setFavoriteStatus(isFavorite(product.id));
+    }
+  }, [product]);
+
   if (!product) {
     return <p>Product not found</p>;
   }
+
+  const handleFavoriteClick = () => {
+    if (favoriteStatus) {
+      removeFavorite(product.id);
+    } else {
+      addFavorite(product);
+    }
+    setFavoriteStatus(!favoriteStatus);
+  };
 
   const { width, height, depth } = product.dimensions;
 
@@ -40,6 +61,7 @@ const ProductView: React.FC<ProductViewProps> = ({ product }) => {
           onClose={closeModal}
           imageUrl={product.thumbnail}
           altText={product.title}
+          contentType="image"
         />
         <p className={styles.productDescription}>{product.description}</p>
 
@@ -56,8 +78,12 @@ const ProductView: React.FC<ProductViewProps> = ({ product }) => {
           <button className={styles.cartBtn}>
             <GiShoppingCart className={styles.btn} />
           </button>
-          <button className={styles.favBtn}>
-            <IoIosStarOutline className={styles.btn} />
+          <button className={styles.favBtn} onClick={handleFavoriteClick}>
+            {isFavorite(product.id) ? (
+              <IoIosStar className={styles.btn} />
+            ) : (
+              <IoIosStarOutline className={styles.btn} />
+            )}
           </button>
         </div>
       </div>

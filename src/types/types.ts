@@ -55,6 +55,7 @@ export interface ProductCardProps {
   products: Product[];
   status: "idle" | "loading" | "succeeded" | "failed";
   onProductClick: (productId: number) => void;
+  onFavoritesChange: () => void; 
 }
 
 
@@ -69,6 +70,6 @@ export interface SearchState {
 export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  imageUrl: string;
-  altText: string;
+  imageUrl?: string;
+  altText?: string;
 }
