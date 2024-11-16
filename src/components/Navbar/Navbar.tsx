@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Navbar.module.css";
+import { useAppDispatch } from "../../app/hooks";
+import { setQuery, fetchSearchResults } from "../../features/products/searchSlice";
 import { GiShoppingCart } from "react-icons/gi";
 import { IoIosStarOutline } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const [inputValue, setInputValue] = useState('');
+
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const query = event.target.value;
+    setInputValue(query);
+    dispatch(setQuery(query));
+    if (query) {
+      dispatch(fetchSearchResults(query));
+    }
+  };
+
   return (
     <div className={styles.navContainer}>
       <div className={styles.navLogo}>
@@ -14,7 +29,7 @@ const Navbar = () => {
 
       <div className={styles.inputWrapper}>
         <CiSearch className={styles.searchIcon}/>
-        <input placeholder="search a product"/>
+        <input type="text" value={inputValue} onChange={handleInputChange} placeholder="Search Products..."/>
       </div>
       <div className={styles.buttonsWrapper}>
         <button className={styles.btn}>

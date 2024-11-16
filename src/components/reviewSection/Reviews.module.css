@@ -1,0 +1,82 @@
+:root {
+    --clr-primary-5: hsl(205, 78%, 60%);
+    --clr-primary-7: hsl(205, 90%, 76%);
+    --clr-grey-1: hsl(209, 61%, 16%);
+    --clr-grey-5: hsl(210, 22%, 49%);
+    --clr-white: #fff;
+    --transition: all 0.3s linear;
+    --radius: 0.25rem;
+    --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.review {
+    background-color: #f4f4f4;
+    padding: 1.5rem 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--light-shadow);
+    transition: var(--transition);
+    text-align: center;
+}
+
+.review:hover {
+    box-shadow: var(--dark-shadow);
+}
+
+.reviewContainer {
+    position: relative;
+    width: 150px;
+    margin: 0 auto;
+    margin-bottom: 1.5rem;
+}
+
+.quote {
+    position: absolute;
+    top: -40px;
+    left: -30px;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--clr-primary-5);
+    color: var(--clr-white);
+}
+
+.stars {
+    font-size: 22px;
+}
+
+.author {
+    margin-bottom: 0.25rem;
+
+    @media  screen and(max-width: 968px) {
+        font-size: 14px;
+    }
+}
+
+.info {
+    margin-bottom: 0.75rem;
+    font-size: 14px;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.prevBtn,
+.nextBtn {
+    color: var(--clr-primary-7);
+    font-size: 1.25rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.prevBtn:hover,
+.nextBtn:hover {
+    color: var(--clr-primary-5);
+}

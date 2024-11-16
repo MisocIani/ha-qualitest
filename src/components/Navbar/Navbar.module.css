@@ -5,6 +5,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 10px;
+    padding: 20px 0;
 
     .navLogo {
         width: 170px;
@@ -47,7 +48,7 @@
     }
 
     .buttonsWrapper {
-        width: 70px;
+        width: 100px;
         display: flex;
         justify-content: space-between;
 
@@ -55,10 +56,17 @@
             background-color: transparent;
             border: none;
             cursor: pointer;
+            padding: 0;
+
+            &:nth-child(1) {
+                padding-right: 40px;
+            }
 
             .icon {
                 width: 30px;
                 height: 30px;
+
+               
             }
         }
     }
