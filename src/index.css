@@ -20,4 +20,5 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: #92c9c7;
 }
