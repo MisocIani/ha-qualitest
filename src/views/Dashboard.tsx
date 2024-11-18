@@ -87,7 +87,7 @@ const Dashboard: React.FC = () => {
               products={productsToDisplay}
               status={status}
               onProductClick={handleProductClick}
-              onFavoritesChange={() => {}} // No-op function
+              onFavoritesChange={() => {}}
             />
           </div>
           <div className={styles.rightPannel}>
