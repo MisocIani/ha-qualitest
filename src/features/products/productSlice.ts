@@ -36,7 +36,7 @@ const productSlice = createSlice({
       .addCase(fetchProducts.fulfilled, (state, action: PayloadAction<Product[]>) => {
         state.status = 'succeeded';
         state.items = [...state.items, ...action.payload];
-        state.skip += 20; // Increment skip by 20 for the next fetch
+        state.skip += 20;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = 'failed';
